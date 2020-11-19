@@ -1,0 +1,16 @@
+# Mac OS X Finder
+.DS_Store
+
+# Xcode
+xcuserdata/
+project.xcworkspace/
+DerivedData/
+*.xcworkspace/xcuserdata
+
+# build products
+build/
+#*.[oa]
+
+# Cocoapods
+Pods/
+Podfile.lock
