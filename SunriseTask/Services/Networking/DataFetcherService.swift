@@ -10,17 +10,18 @@ import Foundation
 class DataFetcherService {
     
     private var dataFetcher: DataFetcher
-    private var baseURLString: String? 
+    private let baseURLString: String
 
-    init(dataFetcher: DataFetcher = NetworkDataFetcher(), longitude: String, latitude: String) {
-        self.baseURLString = "https://api.sunrise-sunset.org/json?lat=\(latitude)&lng=\(longitude)&formatted=0"
+    init(dataFetcher: DataFetcher = NetworkDataFetcher(), baseURLString: String) {
+        self.baseURLString = baseURLString
         self.dataFetcher = dataFetcher
     }
-    
-    
-    func fetchSunStatus(completion: @escaping (SunInfoResponse?) -> Void) {
-        guard let url = baseURLString else { completion(nil)
-            return  }
-        dataFetcher.fetchGenericJSONData(urlString: url, response: completion)
+    private func getFullUrl(longitude: Double,latitude: Double) -> String {
+        return "\(baseURLString)/json?lat=\(longitude)&lng=\(latitude)&formatted=0"
+    }
+
+    func fetchSunStatus(longitude: Double,latitude: Double, completion: @escaping (SunInfoResponse?) -> Void) {
+        let fullUrlString = getFullUrl(longitude: longitude, latitude: latitude)
+        dataFetcher.fetchGenericJSONData(urlString: fullUrlString, response: completion)
     }
 }
