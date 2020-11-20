@@ -41,6 +41,7 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
                 print("Cannot find location")
                 return
             }
+                                            
             self.sunSet.text = sunset
             self.sunRise.text = sunrise
         })
