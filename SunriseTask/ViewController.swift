@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var sunSet: UILabel!
     @IBOutlet weak var sunRise: UILabel!
     
-    private var dataFetcherService = DataFetcherService(longitude:"", latitude:"")
-    
+    private var dataFetcherService = DataFetcherService(baseURLString: "https://api.sunrise-sunset.org")
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,19 +30,27 @@ class ViewController: UIViewController {
 
 extension ViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-    
         textField.text = place.name
-        dataFetcherService = DataFetcherService(longitude:"\(place.coordinate.longitude)", latitude:"\(place.coordinate.latitude)")
-        dataFetcherService.fetchSunStatus { [weak self] (sunInfo) in
-            guard let `self` = self, let sunrise = sunInfo?.results.sunrise,  let sunset = sunInfo?.results.sunset else { return }
+        
+        dataFetcherService.fetchSunStatus(longitude: place.coordinate.longitude,
+                                          latitude: place.coordinate.latitude,
+                                          completion: { [weak self] (sunInfo) in
+            guard let `self` = self,
+                  let sunrise = sunInfo?.results.sunrise,
+                  let sunset = sunInfo?.results.sunset else {
+                print("Cannot find location")
+                return
+            }
             self.sunSet.text = sunset
             self.sunRise.text = sunrise
-        }
+        })
         dismiss(animated: true, completion: nil)
     }
+    
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error: ", error.localizedDescription)
     }
+    
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
     }

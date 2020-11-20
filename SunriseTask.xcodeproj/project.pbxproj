@@ -14,7 +14,7 @@
 		CED8F7AC256504BE004FE368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED8F7AA256504BE004FE368 /* Main.storyboard */; };
 		CED8F7AE256504C3004FE368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED8F7AD256504C3004FE368 /* Assets.xcassets */; };
 		CED8F7B1256504C3004FE368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED8F7AF256504C3004FE368 /* LaunchScreen.storyboard */; };
-		CED8F7DF25666E9A004FE368 /* MyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED8F7DE25666E9A004FE368 /* MyResult.swift */; };
+		CED8F7DF25666E9A004FE368 /* SunInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED8F7DE25666E9A004FE368 /* SunInfoModel.swift */; };
 		CED8F7EC25669F9C004FE368 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED8F7EB25669F9C004FE368 /* NetworkDataFetcher.swift */; };
 		CED8F7F225669FF3004FE368 /* DataRequest .swift in Sources */ = {isa = PBXBuildFile; fileRef = CED8F7F125669FF3004FE368 /* DataRequest .swift */; };
 		CED8F7F62566A011004FE368 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED8F7F52566A011004FE368 /* DataFetcherService.swift */; };
@@ -35,7 +35,7 @@
 		CED8F7AD256504C3004FE368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CED8F7B0256504C3004FE368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CED8F7B2256504C3004FE368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CED8F7DE25666E9A004FE368 /* MyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyResult.swift; sourceTree = "<group>"; };
+		CED8F7DE25666E9A004FE368 /* SunInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunInfoModel.swift; sourceTree = "<group>"; };
 		CED8F7EB25669F9C004FE368 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		CED8F7F125669FF3004FE368 /* DataRequest .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataRequest .swift"; sourceTree = "<group>"; };
 		CED8F7F52566A011004FE368 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		CED8F7E925669F56004FE368 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CED8F7DE25666E9A004FE368 /* MyResult.swift */,
+				CED8F7DE25666E9A004FE368 /* SunInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 				CED8F80F2566AE71004FE368 /* ErrorTypeEnum.swift in Sources */,
 				CED8F7A5256504BE004FE368 /* AppDelegate.swift in Sources */,
 				CED8F80C2566AE5C004FE368 /* NetworkingProtocol.swift in Sources */,
-				CED8F7DF25666E9A004FE368 /* MyResult.swift in Sources */,
+				CED8F7DF25666E9A004FE368 /* SunInfoModel.swift in Sources */,
 				CED8F7A7256504BE004FE368 /* SceneDelegate.swift in Sources */,
 				CED8F7EC25669F9C004FE368 /* NetworkDataFetcher.swift in Sources */,
 				CED8F8082566AE3D004FE368 /* DataFetcherProtocol.swift in Sources */,
