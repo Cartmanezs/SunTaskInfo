@@ -15,9 +15,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var sunRise: UILabel!
     
     private var dataFetcherService = DataFetcherService(baseURLString: "https://api.sunrise-sunset.org")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    private func dateFormat(timeResult: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormatter.date(from:timeResult)!
+        let convertDateFormatter = DateFormatter()
+        convertDateFormatter.dateFormat = "h:mm a"
+        return convertDateFormatter.string(from: date)
     }
     
     @IBAction func textFieldTapped(_ sender: Any) {
@@ -35,16 +44,21 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
         dataFetcherService.fetchSunStatus(longitude: place.coordinate.longitude,
                                           latitude: place.coordinate.latitude,
                                           completion: { [weak self] (sunInfo) in
-            guard let `self` = self,
-                  let sunrise = sunInfo?.results.sunrise,
-                  let sunset = sunInfo?.results.sunset else {
-                print("Cannot find location")
-                return
-            }
+                                            guard let `self` = self,
+                                                  let sunrise = sunInfo?.results.sunrise,
+                                                  let sunset = sunInfo?.results.sunset else {
+                                                print("Cannot find location")
+                                                return
+                                            }
                                             
-            self.sunSet.text = sunset
-            self.sunRise.text = sunrise
-        })
+                                            if sunrise != "" && sunset != "" {
+                                                
+                                                self.sunRise.text = self.dateFormat(timeResult: sunrise)
+                                                self.sunSet.text = self.dateFormat(timeResult: sunset)
+                                                 
+                                            }
+                                            
+                                          })
         dismiss(animated: true, completion: nil)
     }
     
